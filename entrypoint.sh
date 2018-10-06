@@ -2,4 +2,4 @@
 echo "Apply database migrations"
 python manage.py migrate --run-syncdb
 echo "Starting server"
-gunicorn nozbe.wsgi --log-file -
+gunicorn nozbe_pczeszkiewicz.wsgi --log-file -
