@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: postgres:10
+    env_file:
+      - configs/db.env
+    ports:
+    - "5400:5432"
+  backend:
+    build: .
+    command: sh /nozbe/entrypoint.sh
+    volumes:
+      - .:/nozbe
+    ports:
+      - "8000:8000"
+    env_file:
+      - configs/backend.env
+    depends_on:
+      - db
