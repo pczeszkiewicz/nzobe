@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from rest_framework.filters import SearchFilter
 
 from nozbe.models import Title, Name
 from nozbe.rest.serializers import TitleSerializer, NameSerializer
@@ -23,4 +24,5 @@ class TitleViewSet(viewsets.ModelViewSet):
 class NameViewSet(viewsets.ModelViewSet):
     queryset = Name.objects.all()
     serializer_class = NameSerializer
-    filter_fields = ('primary_name',)
+    filter_backends = (SearchFilter,)
+    search_fields = ('primary_name', )
